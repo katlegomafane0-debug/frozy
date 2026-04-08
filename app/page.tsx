@@ -112,8 +112,9 @@ export default function Home() {
             src={IMG.heroSplash}
             alt="Frozy product range splash"
             fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
+            style={{ objectFit: "contain", objectPosition: "center" }}
             priority
+            quality={100}
           />
         </div>
         <div className="page-hero__overlay" aria-hidden="true" />
