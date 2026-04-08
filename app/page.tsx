@@ -214,12 +214,12 @@ export default function Home() {
                   <Image
                     src={p.image}
                     alt={p.name}
-                    width={520}
-                    height={520}
+                    width={320}
+                    height={320}
                     style={{
                       width: "100%",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
+                      height: "100%",
+                      objectFit: "contain",
                     }}
                   />
                   <div
