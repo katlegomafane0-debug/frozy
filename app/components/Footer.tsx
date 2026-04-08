@@ -1,16 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { FrozyLogo } from "./FrozyLogo";
-
-const navLinks = [
-  { href: "/", label: "Início" },
-  { href: "/about", label: "Sobre Nós" },
-  { href: "/products", label: "Produtos" },
-  { href: "/quality", label: "Qualidade" },
-  { href: "/trade", label: "Parceiros" },
-  { href: "/find-us", label: "Onde Encontrar" },
-  { href: "/contact", label: "Contactos" },
-  { href: "/media", label: "Imprensa" },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 function FacebookIcon() {
   return (
@@ -41,22 +33,44 @@ function LinkedinIcon() {
 }
 
 export function Footer() {
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { href: "/", label: t("nav.home") },
+    { href: "/about", label: t("nav.about") },
+    { href: "/products", label: t("nav.products") },
+    { href: "/quality", label: t("nav.quality") },
+    { href: "/trade", label: t("nav.trade") },
+    { href: "/find-us", label: t("nav.findUs") },
+    { href: "/contact", label: t("nav.contact") },
+  ];
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__grid">
           <div className="footer__col footer__col--brand">
             <FrozyLogo />
-            <p className="footer__tagline">Feito em Moçambique</p>
-            <button className="lang-toggle lang-toggle--footer">
-              <span className="lang-toggle__active">PT</span>
+            <p className="footer__tagline">{t("footer.tagline")}</p>
+            <div className="lang-toggle lang-toggle--footer">
+              <button 
+                className={language === "pt" ? "lang-toggle__active" : ""} 
+                onClick={() => setLanguage("pt")}
+              >
+                PT
+              </button>
               <span className="lang-toggle__divider">|</span>
-              <span>EN</span>
-            </button>
+              <button 
+                className={language === "en" ? "lang-toggle__active" : ""} 
+                onClick={() => setLanguage("en")}
+              >
+                EN
+              </button>
+            </div>
           </div>
 
           <div className="footer__col">
-            <h3 className="footer__col-title">Navegação</h3>
+            <h3 className="footer__col-title">{t("footer.navTitle")}</h3>
             <nav aria-label="Footer navigation">
               {navLinks.map((l) => (
                 <Link key={l.href} className="footer__link" href={l.href}>
@@ -67,7 +81,7 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
-            <h3 className="footer__col-title">Contacto</h3>
+            <h3 className="footer__col-title">{t("footer.contactTitle")}</h3>
             <address className="footer__address">
               <p className="footer__address-line">
                 [ENDEREÇO — A CONFIRMAR COM YAAFICO]
@@ -80,7 +94,7 @@ export function Footer() {
           </div>
 
           <div className="footer__col">
-            <h3 className="footer__col-title">Redes Sociais</h3>
+            <h3 className="footer__col-title">{t("footer.socialTitle")}</h3>
             <div className="footer__socials">
               <a href="#" className="footer__social-link" aria-label="Facebook">
                 <FacebookIcon />
@@ -92,16 +106,16 @@ export function Footer() {
                 <LinkedinIcon />
               </a>
             </div>
-            <p className="footer__social-note">Segue-nos nas redes sociais</p>
+            <p className="footer__social-note">{t("footer.socialNote")}</p>
           </div>
         </div>
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} Frozy | Todos os direitos reservados
+            © {new Date().getFullYear()} Frozy | {t("footer.rights")}
           </p>
           <Link className="footer__link footer__link--small" href="/privacy">
-            Política de Privacidade
+            {t("footer.privacy")}
           </Link>
         </div>
       </div>

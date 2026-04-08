@@ -3,18 +3,21 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { FrozyLogo } from "./FrozyLogo";
-
-const links = [
-  { href: "/", label: "Início" },
-  { href: "/about", label: "Sobre Nós" },
-  { href: "/products", label: "Produtos" },
-  { href: "/quality", label: "Qualidade" },
-  { href: "/trade", label: "Parceiros" },
-  { href: "/find-us", label: "Onde Encontrar" },
-  { href: "/contact", label: "Contactos" },
-];
+import { useLanguage } from "../contexts/LanguageContext";
 
 export function Nav() {
+  const { language, setLanguage, t } = useLanguage();
+
+  const links = [
+    { href: "/", label: t("nav.home") },
+    { href: "/about", label: t("nav.about") },
+    { href: "/products", label: t("nav.products") },
+    { href: "/quality", label: t("nav.quality") },
+    { href: "/trade", label: t("nav.trade") },
+    { href: "/find-us", label: t("nav.findUs") },
+    { href: "/contact", label: t("nav.contact") },
+  ];
+
   return (
     <header className="nav">
       <div className="nav__inner container">
@@ -31,13 +34,23 @@ export function Nav() {
         </nav>
 
         <div className="nav__actions">
-          <button className="lang-toggle" aria-label="Switch to English">
-            <span className="lang-toggle__active">PT</span>
+          <div className="lang-toggle">
+            <button 
+              className={language === "pt" ? "lang-toggle__active" : ""} 
+              onClick={() => setLanguage("pt")}
+            >
+              PT
+            </button>
             <span className="lang-toggle__divider">|</span>
-            <span>EN</span>
-          </button>
+            <button 
+              className={language === "en" ? "lang-toggle__active" : ""} 
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </button>
+          </div>
           <Link className="btn btn--accent btn--sm" href="/trade">
-            Seja Parceiro
+            {t("nav.bePartner")}
           </Link>
         </div>
 

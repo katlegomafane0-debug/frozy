@@ -222,12 +222,23 @@ a {
   background: none;
   border: none;
   color: var(--color-text-muted);
-  cursor: pointer;
   font-size: 0.8rem;
   font-weight: 600;
 }
-.lang-toggle__active {
+.lang-toggle button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+.lang-toggle button:hover {
   color: #fff;
+}
+.lang-toggle__active {
+  color: #fff !important;
 }
 .lang-toggle__divider {
   opacity: 0.3;
