@@ -21,6 +21,7 @@ const IMG = {
   // Hero can image
   novaLata:
     "https://www.frozy.co.mz/wp-content/uploads/2025/09/Nova-Lata-scaled.png.webp",
+  heroSplash: "/images/hero-splash.png",
 };
 
 /* ── Data ────────────────────────────────────────────────── */
@@ -108,10 +109,10 @@ export default function Home() {
       <section className="page-hero page-hero--full" aria-label="Hero">
         <div className="page-hero__media">
           <Image
-            src={IMG.frozySabores}
-            alt="Frozy product range"
+            src={IMG.heroSplash}
+            alt="Frozy product range splash"
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", objectPosition: "center" }}
             priority
           />
         </div>
