@@ -112,7 +112,7 @@ export default function Home() {
             src={IMG.heroSplash}
             alt="Frozy product range splash"
             fill
-            style={{ objectFit: "contain", objectPosition: "center" }}
+            style={{ objectFit: "cover", objectPosition: "center" }}
             priority
             quality={100}
           />
